@@ -1,0 +1,368 @@
+/*********SCSS FILES***********/
+@import 'variables';
+@import 'mixins';
+
+/*********GOOGLE FONTS********/
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600;1,700&display=swap');
+
+
+/***********BASIC************/
+
+body {
+	font-family: $cursiveFont;
+	font-size: $font;
+	color: $white;
+	background-image: linear-gradient($transparent, $transparent), url(../images/background.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+
+	@media (max-width: 575.98px) {
+		background-color: linear-gradient(rgba(0, 0, 0, 0.8), $transparent);
+	}
+}
+
+a {
+	text-decoration: none;
+	color: $white;
+}
+
+
+section {
+	min-height: 100vh;
+
+	@media (max-width: 991.98px) {
+		height: auto;
+	}
+}
+
+.container {
+	max-width: 90%;
+	padding: 40px;
+
+	@media (max-width: 575.98px) {
+		padding: 15px;
+	}
+}
+
+.box {
+	@include blackbox;
+	padding: 30px;
+}
+
+.heading {
+	font-family: $cursiveFont;
+	font-size: 2.8rem;
+	font-weight: 700;
+}
+
+/*********PRELOADER***********/
+
+.preloader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: none repeat scroll 0 0 $black;
+}
+
+.loading {
+	width: 50px;
+	height: 50px;
+	border: 2px solid $white;
+	display: grid;
+	animation: turn 4s infinite linear;
+
+	&:before,
+	&:after {
+		content: "";
+		grid-area: 1/1;
+		margin: auto;
+		width: 70%;
+		height: 70%;
+		border: 2px dotted $white;
+		animation: inherit;
+	}
+
+	&:after {
+		width: 50%;
+		height: 50%;
+		border: 2px solid $white;
+		animation-duration: 2s;
+	}
+
+	@keyframes turn {
+		100% {
+			transform: rotate(1turn)
+		}
+	}
+}
+
+
+/*********HEADER***********/
+
+.header {
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100vh;
+	width: $sidebar-width;
+	background: $black;
+	letter-spacing: $letterSpacing;
+
+	@media (max-width: 991.98px) {
+		position: static;
+		width: inherit;
+		height: auto;
+	}
+
+	.my-name {
+		a {
+			font-weight: 700;
+
+			&:hover {
+				color: $gray;
+			}
+		}
+
+		@media (max-width: 991.98px) {
+			width: 100%;
+			position: absolute;
+			left: 0;
+			top: 1.1rem;
+		}
+	}
+
+	.navbar {
+		padding: 2rem 1rem;
+
+		@media (max-width: 991.98px) {
+			padding: 1rem;
+		}
+
+	}
+
+	.navbar-toggler {
+		&:focus {
+			box-shadow: none;
+		}
+	}
+
+	.navbar-dark {
+		.navbar-toggler {
+			border: 1px solid rgba(256, 256, 256, 0.8);
+			padding: .25rem .6rem;
+		}
+	}
+
+	.profile-section {
+		.profile-image {
+			max-width: 160px;
+
+			@media (max-width: 991.98px) {
+				margin-top: 40px;
+			}
+		}
+	}
+
+	.social-list {
+		a {
+			font-size: 1.4rem;
+			display: inline-block;
+			transition: $transition;
+			@include hover;
+		}
+	}
+
+	.nav-item {
+		font-weight: 700;
+		font-size: 1.9rem;
+		letter-spacing: 3px;
+
+		.nav-link {
+			color: $white;
+			transition: $transition;
+			@include hover;
+		}
+	}
+}
+
+/*********MAIN***********/
+main {
+	margin-left: $sidebar-width;
+	font-family: $regularFont;
+	font-weight: 400;
+
+	@media (max-width: 991.98px) {
+		margin: auto;
+	}
+}
+
+
+/*********INTRO SECTION***********/
+
+.intro {
+	font-family: $cursiveFont;
+
+	h2 {
+		font-size: 4rem;
+	}
+
+	h3 {
+		font-size: 2.5rem;
+	}
+
+	@media (max-width: 575.98px) {
+
+		h2 {
+			font-size: 2.8rem;
+		}
+
+		h3 {
+			font-size: 1.8rem;
+		}
+	}
+}
+
+
+/*********ABOUT SECTION***********/
+
+.about {
+	font-size: 1.1rem;
+}
+
+
+/**************SKILLS SECTION************/
+
+.skills {
+	font-size: 3.5rem;
+
+	h2 {
+		margin-top: 60px;
+	}
+}
+
+
+/**************PROJECTS SECTION************/
+
+.projects {
+
+	h2 {
+		margin-top: 50px;
+	}
+
+	.card {
+		border: none;
+		font-weight: 300;
+		min-height: 65vh;
+		max-height: 75vh;
+		@include blackbox;
+		flex-direction: row;
+
+		@media (max-width: 575.98px) {
+			max-height: 85vh;
+		}
+
+		img {
+			max-width: 50%;
+		}
+
+		.card-body {
+			padding: 40px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+
+			@media (max-width: 575.98px) {
+				padding: 20px;
+				font-size: 0.8rem;
+			}
+		}
+
+		.portfolio-links {
+			font-size: 2rem;
+
+			@media (max-width: 575.98px) {
+				font-size: 1.2rem;
+			}
+
+			i {
+				padding: 10px;
+				transition: $transition;
+
+				&:hover {
+					color: $black;
+				}
+			}
+		}
+	}
+
+	.carousel-control-prev,
+	.carousel-control-next {
+		width: 5%;
+	}
+
+}
+
+/**************CONTACT SECTION************/
+
+.contact {
+	.heading {
+		margin-top: 50px;
+	}
+
+
+	.contact-item {
+		margin-bottom: 20px;
+		min-height: 30vh;
+		padding: 30px 0 30px 0;
+		@include blackbox;
+
+		h2 {
+			font-size: 3rem;
+		}
+
+		p {
+			font-size: 0.9rem;
+
+			a {
+				transition: $transition;
+
+				&:hover {
+					color: $black;
+				}
+
+				i {
+					font-size: 1.4rem;
+				}
+			}
+		}
+	}
+}
+
+
+/*********BACK TO TOP BUTTON***********/
+#btn-back-to-top {
+	position: fixed;
+	bottom: 45px;
+	right: 20px;
+	display: none;
+}
+
+/***************FOOTER****************/
+footer {
+	margin-left: $sidebar-width;
+	font-size: 1.8rem;
+	font-weight: 700;
+
+	@media (max-width: 991.98px) {
+		margin: auto;
+	}
+}
