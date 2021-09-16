@@ -20,7 +20,8 @@ body {
 	background-size: cover;
 
 	@media (max-width: 575.98px) {
-		background-color: linear-gradient(rgba(0, 0, 0, 0.8), $transparent);
+		background: $black;
+		background: linear-gradient(200deg, rgba(0,0,0,0.8), $transparent 70%);
 	}
 }
 
